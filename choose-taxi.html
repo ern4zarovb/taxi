@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор Такси</title>
+    <link rel="stylesheet" href="https://api-maps.yandex.ru/2.1/styles/blue/styles.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(120deg, #B5FFFC, #FFDEE9);
+            color: #333;
+            padding: 0;
+        }
+
+        /* Меню */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 250px;
+            height: 100vh;
+            background-color: #4CAF50;
+            transition: left 0.4s ease;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #FFDEE9;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1100;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: #45A049;
+        }
+
+        .menu.active {
+            left: 0;
+        }
+
+        .close-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #FFDEE9;
+        }
+
+        /* Основная часть */
+        header {
+            background-color: #4CAF50;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            margin-top: 40px; 
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .taxi-option {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .taxi-option h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .taxi-option p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #FF6B6B, #FF8C8C);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Меню -->
+    <div class="menu" id="menu">
+        <button class="close-btn" id="close-menu">&times;</button>
+        <a href="index.html">Главная</a>
+        <a href="choose-taxi.html">Выбор Такси</a>
+        <a href="onas.html">О нас</a>
+        <a href="kontakty.html">Контакты</a>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle">
+        <span style="color:white; font-size: 1.5rem;">&#9776;</span>
+    </div>
+
+    <header>
+        <h1>Выбор Такси</h1>
+    </header>
+
+    <div class="content">
+        <div class="taxi-option">
+            <h2>Обычное детское такси</h2>
+			<h3>Цена 3000тг</h3>
+            <p>Безопасная поездка для вашего ребенка на указанное место.</p>
+            <button class="btn" onclick="window.location.href='order.html'">Заказать</button>
+        </div>
+        <div class="taxi-option">
+            <h2>Такси с сопровождением</h2>
+			<h3>Цена 10000тг</h3>
+            <p>Сопровождение на отдых или в секции.</p>
+            <button class="btn" onclick="window.location.href='order2.html'">Заказать</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Безопасные перевозки для детей. Все права защищены.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.add('active');
+            menuToggle.style.display = 'none';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            menu.classList.remove('active');
+            menuToggle.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

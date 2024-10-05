@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О Нас</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(120deg, #B5FFFC, #FFDEE9);
+            color: #333;
+            padding: 0px;
+        }
+
+        header {
+            background-color: #4CAF50;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .team-member {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .team-details {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+
+        .sponsors {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .sponsor {
+            display: inline-block;
+            margin: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>О Нас</h1>
+    </header>
+
+    <div class="content">
+        <h2>Наша Миссия</h2>
+        <p>Мы, компания "Taxi for Kids", стремимся предоставить безопасные и надежные перевозки для детей, обеспечивая комфорт и внимание на каждом этапе поездки. Наша цель — сделать каждую поездку не только безопасной, но и приятной.</p>
+        <p>Основана в 2024 году, мы уверены, что каждый ребенок заслуживает наилучшего обслуживания и заботы во время поездки.</p>
+
+        <h2 class="toggle-btn" onclick="toggleTeam()">Наша Команда</h2>
+        <div class="team-details" id="team-details">
+            <div class="team-member" id="member1">
+                <h3>Тапыев Нурбол</h3>
+                <p>Создатель компании. Страстный сторонник безопасных перевозок для детей, стремится обеспечить лучший сервис для наших клиентов.</p>
+            </div>
+            <div class="team-member" id="member2">
+                <h3>Сидоров Иван</h3>
+                <p>Водитель с 5-летним стажем, который заботится о безопасности детей.</p>
+            </div>
+            <div class="team-member" id="member3">
+                <h3>Петрова Анна</h3>
+                <p>Сопровождающий, который всегда следит за комфортом и безопасностью наших пассажиров.</p>
+            </div>
+            <div class="team-member" id="member4">
+                <h3>Иванова Светлана</h3>
+                <p>Менеджер по обслуживанию клиентов, готова ответить на все ваши вопросы.</p>
+            </div>
+            <div class="team-member" id="member5">
+                <h3>Александров Дмитрий</h3>
+                <p>Водитель с 7-летним опытом работы, который знает, как обеспечить безопасность детей в пути.</p>
+            </div>
+            <div class="team-member" id="member6">
+                <h3>Куликова Мария</h3>
+                <p>Сопровождающая с любовью к детям, обеспечивает их безопасность и комфорт во время поездки.</p>
+            </div>
+            <div class="team-member" id="member7">
+                <h3>Нургалиева Лейла</h3>
+                <p>Специалист по безопасности, проводит тренинги для водителей и сопровождающих.</p>
+            </div>
+        </div>
+
+        <div class="company-name">Taxi for Kids</div>
+        <p style="text-align: center;">Наш офис: ул. Радуга, 23, г. Актау, Казахстан</p>
+
+        <div class="sponsors">
+            <h2>Наши Спонсоры</h2>
+            <div class="sponsor">Mercedes</div>
+            <div class="sponsor">McDonald's</div>
+            <div class="sponsor">Adidas</div>
+            <div class="sponsor">Huawei</div>
+            <div class="sponsor">Samruk Kazyna</div>
+            <div class="sponsor">Allianz</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Безопасные перевозки для детей. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function toggleTeam() {
+            const details = document.getElementById("team-details");
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+                // Добавляем анимацию для каждого члена команды
+                const members = details.getElementsByClassName("team-member");
+                for (let i = 0; i < members.length; i++) {
+                    setTimeout(() => {
+                        members[i].style.opacity = 1;
+                        members[i].style.transform = "translateY(0)";
+                    }, i * 200); // Увеличиваем задержку для каждого члена
+                }
+            } else {
+                // Скрываем членов команды
+                for (let member of details.getElementsByClassName("team-member")) {
+                    member.style.opacity = 0;
+                    member.style.transform = "translateY(20px)";
+                }
+                details.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

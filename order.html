@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление Заказа</title>
+    <link rel="stylesheet" href="https://api-maps.yandex.ru/2.1/styles/blue/styles.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(120deg, #B5FFFC, #FFDEE9);
+            color: #333;
+            padding: 0;
+        }
+
+        /* Меню */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #4CAF50;
+            transition: left 0.4s ease;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #FFDEE9;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1100;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: #45A049;
+        }
+
+        .menu.active {
+            left: 0;
+        }
+
+        .close-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #FFDEE9;
+        }
+
+        header {
+            background-color: #4CAF50;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            margin: auto;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 40px; 
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .payment-method {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #FF6B6B, #FF8C8C);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            margin-top: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Стиль для кнопки выбора банка */
+        #payment-method {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        #payment-method:hover {
+            border-color: #4CAF50;
+        }
+
+        .card-input, .beeline-input, .code-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Меню -->
+    <div class="menu" id="menu">
+        <button class="close-btn" id="close-menu">&times;</button>
+        <a href="index.html">Главная</a>
+        <a href="choose-taxi.html">Выбор Такси</a>
+        <a href="onas.html">О нас</a>
+        <a href="kontakty.html">Контакты</a>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle">
+        <span style="color:white; font-size: 1.5rem;">&#9776;</span>
+    </div>
+
+    <header>
+        <h1>Оформление Заказа</h1>
+    </header>
+
+    <div class="content">
+        <div class="input-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" placeholder="Введите ваше имя" required>
+        </div>
+        <div class="input-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" placeholder="Введите номер телефона" required>
+        </div>
+        <div class="input-group">
+            <label for="email">Электронная почта</label>
+            <input type="email" id="email" placeholder="Введите вашу электронную почту" required>
+        </div>
+
+        <div class="payment-method">
+            <label for="payment-method">Способ оплаты:</label>
+            <select id="payment-method">
+                <option value="kaspi">Kaspi Bank</option>
+                <option value="halyk">Halyk Bank</option>
+                <option value="forte">Forte Bank</option>
+                <option value="bcc">BCC.KZ</option>
+                <option value="qiwi">Qiwi кошелок</option>
+                <option value="beeline">Beeline</option>
+            </select>
+        </div>
+
+        <div id="card-input" class="card-input input-group">
+            <label for="card-number">Номер карты</label>
+            <input type="text" id="card-number" placeholder="Введите номер карты">
+        </div>
+
+        <div id="beeline-input" class="beeline-input input-group">
+            <label for="beeline-number">Номер Beeline</label>
+            <input type="text" id="beeline-number" placeholder="Введите номер Beeline">
+        </div>
+
+        <div id="code-input" class="code-input input-group">
+            <label for="verification-code">Код подтверждения</label>
+            <input type="text" id="verification-code" placeholder="Введите код, отправленный на Beeline">
+        </div>
+
+        <button class="btn" id="submit-btn">Подтвердить Заказ</button>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.add('active');
+            menuToggle.style.display = 'none';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            menu.classList.remove('active');
+            menuToggle.style.display = 'block';
+        });
+
+        const paymentMethodSelect = document.getElementById('payment-method');
+        const cardInput = document.getElementById('card-input');
+        const beelineInput = document.getElementById('beeline-input');
+        const codeInput = document.getElementById('code-input');
+
+        paymentMethodSelect.addEventListener('change', function() {
+            const selectedValue = paymentMethodSelect.value;
+
+            // Скрыть все поля
+            cardInput.style.display = 'none';
+            beelineInput.style.display = 'none';
+            codeInput.style.display = 'none';
+
+            // Показать соответствующие поля в зависимости от выбранного метода оплаты
+            if (selectedValue !== 'beeline') {
+                cardInput.style.display = 'block';
+            } else {
+                beelineInput.style.display = 'block';
+            }
+        });
+
+        // Обработчик для поля ввода Beeline
+        beelineInput.addEventListener('input', function() {
+            if (beelineInput.querySelector('input').value.length > 0) {
+                codeInput.style.display = 'block';
+            } else {
+                codeInput.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

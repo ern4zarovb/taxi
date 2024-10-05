@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="https://api-maps.yandex.ru/2.1/styles/blue/styles.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(120deg, #B5FFFC, #FFDEE9);
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #FF6B6B, #FF8C8C);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #FF8C8C, #FF6B6B);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Контакты</h1>
+    </header>
+
+    <div class="content">
+        <h2>Связаться с нами</h2>
+        <p>Вы можете связаться с нами по следующим контактам:</p>
+        <ul>
+            <li>Email: support@taxiforkids.com</li>
+            <li>Телефон: +7 (777) 123-45-67</li>
+            <li>Адрес: г. Алматы, ул. Примерная, дом 45</li>
+        </ul>
+        <h2>Форма обратной связи</h2>
+        <form>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Taxi for Kids. Все права защищены.</p>
+    </footer>
+    
+</body>
+</html>
